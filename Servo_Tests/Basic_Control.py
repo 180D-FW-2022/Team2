@@ -7,7 +7,7 @@ if __name__ == '__main__':
     # PWM Pin
     pin = 32;
     # Frequency
-    freq = 2000
+    freq = 2
     # Duty Cycle
     duty = 50
 
@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     pwm.start(duty)
 
-    time.sleep(150)
+    #pwm.ChangeDutyCycle(duty)
 
     pwm.stop()
 
