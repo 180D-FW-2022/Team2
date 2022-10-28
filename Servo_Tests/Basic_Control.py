@@ -7,9 +7,9 @@ if __name__ == '__main__':
     # PWM Pin
     pin = 32
     # Frequency
-    freq = 1000
+    freq = 400
     # Duty Cycle
-    duty = 100
+    duty = 50
 
     GPIO.setwarnings(False)
 
