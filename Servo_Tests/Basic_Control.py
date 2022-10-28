@@ -7,7 +7,7 @@ if __name__ == '__main__':
     # PWM Pin
     pin = 32
     # Frequency
-    freq = 2000
+    freq = 1000
     # Duty Cycle
     duty = 100
 
