@@ -19,9 +19,10 @@ if __name__ == '__main__':
 
     pwm.start(duty)
 
-    #pwm.ChangeDutyCycle(duty)
-
-    time.sleep(150)
+    for duty in range (40,80)
+        pwm.ChangeDutyCycle(duty)
+        print(duty)
+        time.sleep(5)
 
     pwm.stop()
 
