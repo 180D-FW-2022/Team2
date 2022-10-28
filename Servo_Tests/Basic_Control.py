@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BOARD)
@@ -19,7 +20,7 @@ if __name__ == '__main__':
 
     pwm.start(duty)
 
-    sleep(150)
+    time.sleep(150)
 
     pwm.stop()
 
