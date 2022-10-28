@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     pwm.start(duty)
 
-    dutySpread = [53.80000004, 54.5000000006, 57.0, 57.7]
+    dutySpread = [54, 57.0, 57.7]
 
     #dutySpread = np.arange(50, 60, 0.1)
 
