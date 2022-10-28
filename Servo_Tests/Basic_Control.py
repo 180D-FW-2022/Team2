@@ -5,11 +5,11 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BOARD)
 
     # PWM Pin
-    pin = 32;
+    pin = 32
     # Frequency
     freq = 2
     # Duty Cycle
-    duty = 50
+    duty = 100
 
     GPIO.setwarnings(False)
 
