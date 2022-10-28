@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import numpy as np
 import time
 
 if __name__ == '__main__':
@@ -19,7 +20,9 @@ if __name__ == '__main__':
 
     pwm.start(duty)
 
-    for duty in range (50,60,0.1):
+    dutySpread = np.arange(50, 60, 0.1)
+
+    for duty in dutySpread:
         pwm.ChangeDutyCycle(duty)
         print(duty)
         time.sleep(5)
