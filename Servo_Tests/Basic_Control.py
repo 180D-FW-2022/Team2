@@ -21,6 +21,8 @@ if __name__ == '__main__':
 
     #pwm.ChangeDutyCycle(duty)
 
+    sleep(150)
+
     pwm.stop()
 
     GPIO.cleanup()
