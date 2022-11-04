@@ -18,6 +18,7 @@ if __name__ == '__main__':
 
     GPIO.setup(pin1, GPIO.OUT)
     GPIO.setup(pin2, GPIO.OUT)
+    GPIO.setup(pin3, GPIO.OUT)
 
     pwm1 = GPIO.PWM(pin1, freq)
     pwm2 = GPIO.PWM(pin2, freq)
