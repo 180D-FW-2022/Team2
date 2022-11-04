@@ -6,8 +6,9 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BOARD)
 
     # PWM Pin
-    pin1 = 32
-    pin2 = 7
+    #pin1 = 32
+    pin1 = 35
+    pin2 = 33
     # Frequency
     freq = 400
     # Duty Cycle
