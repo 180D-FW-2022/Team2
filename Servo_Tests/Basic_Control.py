@@ -9,7 +9,7 @@ if __name__ == '__main__':
     pin1 = 32
     pin2 = 33
     # Frequency
-    freq = 650
+    freq = 500
     # Duty Cycle
     duty = 60
 
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     #dutySpread = [54, 57.0, 57.7]
 
-    dutySpread = np.arange(65, 90, 1)
+    dutySpread = np.arange(45, 85, 1)
 
     for duty in dutySpread:
         pwm1.ChangeDutyCycle(duty)
