@@ -26,23 +26,25 @@ if __name__ == '__main__':
 
     pwm1.start(duty)
     pwm2.start(duty)
-    pwm3.start(duty)
+    #pwm3.start(duty)
 
     #dutySpread = [54, 57.0, 57.7]
 
     dutySpread = np.arange(68, 75, 0.2)
 
     duty1 = 60
+    duty2 = 69.8
+    #69.80000000000003
 
     for duty in dutySpread:
         pwm1.ChangeDutyCycle(duty1)
-        pwm2.ChangeDutyCycle(duty)
-        pwm3.ChangeDutyCycle(duty)
+        pwm2.ChangeDutyCycle(duty2)
+        #pwm3.ChangeDutyCycle(duty)
         print(duty)
-        time.sleep(20)
+        time.sleep(50)
 
     pwm1.stop()
     pwm2.stop()
-    pwm3.stop()
+    #pwm3.stop()
 
     GPIO.cleanup()
