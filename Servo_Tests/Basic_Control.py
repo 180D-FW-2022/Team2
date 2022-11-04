@@ -6,11 +6,10 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BOARD)
 
     # PWM Pin
-    #pin1 = 32
-    pin1 = 35
+    pin1 = 32
     pin2 = 33
     # Frequency
-    freq = 400
+    freq = 650
     # Duty Cycle
     duty = 60
 
@@ -27,7 +26,7 @@ if __name__ == '__main__':
 
     #dutySpread = [54, 57.0, 57.7]
 
-    dutySpread = np.arange(40, 80, 1)
+    dutySpread = np.arange(65, 90, 1)
 
     for duty in dutySpread:
         pwm1.ChangeDutyCycle(duty)
