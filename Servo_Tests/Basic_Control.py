@@ -8,6 +8,7 @@ if __name__ == '__main__':
     # PWM Pin
     pin1 = 32
     pin2 = 33
+    pin3 = 37
     # Frequency
     freq = 400
     # Duty Cycle
@@ -20,9 +21,11 @@ if __name__ == '__main__':
 
     pwm1 = GPIO.PWM(pin1, freq)
     pwm2 = GPIO.PWM(pin2, freq)
+    pwm3 = GPIO.PWM(pin3, freq)
 
     pwm1.start(duty)
     pwm2.start(duty)
+    pwm3.start(duty)
 
     #dutySpread = [54, 57.0, 57.7]
 
@@ -33,10 +36,12 @@ if __name__ == '__main__':
     for duty in dutySpread:
         pwm1.ChangeDutyCycle(duty1)
         pwm2.ChangeDutyCycle(duty)
+        pwm3.ChangeDutyCycle(duty)
         print(duty)
         time.sleep(10)
 
     pwm1.stop()
     pwm2.stop()
+    pwm3.stop()
 
     GPIO.cleanup()
