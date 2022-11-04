@@ -10,7 +10,7 @@ if __name__ == '__main__':
     pin2 = 33
     pin3 = 37
     # Frequency
-    freq = 200
+    freq = 300
     # Duty Cycle
     duty = 60
 
@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     #dutySpread = [54, 57.0, 57.7]
 
-    dutySpread = np.arange(10, 50, 1)
+    dutySpread = np.arange(20, 60, 1)
 
     duty1 = 60
 
