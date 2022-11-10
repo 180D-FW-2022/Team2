@@ -4,7 +4,6 @@ import time
 bd_addr = "B8:27:EB:0E:7D:93"
 
 port = 1
-
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((bd_addr, port))
 
