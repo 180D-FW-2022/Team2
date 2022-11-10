@@ -3,8 +3,10 @@ import numpy as np
 import bluetooth
 import time
 
+# Replace with bluetooth MAC address of your raspberry pi
 bd_addr = "B8:27:EB:0E:7D:93"
 
+# Bluetooth setup
 port = 1
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((bd_addr, port))
@@ -27,10 +29,6 @@ while(1):
 
     # Bitwise-AND mask and original image
     res = cv.bitwise_and(frame,frame, mask= mask)
-
-    #cv.imshow('frame',frame)
-    #cv.imshow('mask',mask)
-    #cv.imshow('res',res)
 
     # Creating bounding boxes
     contours, _ = cv.findContours(mask, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
