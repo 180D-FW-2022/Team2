@@ -12,6 +12,8 @@ sock.connect((bd_addr, port))
 while(1):
     # This will just send the message below to test bluetooth connectivity
     sock.send("Hello from Surface Laptop!")
+
+    # Sends every 2 seconds
     time.sleep(2)
 
 sock.close()
