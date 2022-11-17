@@ -3,7 +3,10 @@ import numpy as np
 import bluetooth
 
 # Replace with bluetooth MAC address of your raspberry pi
-bd_addr = "B8:27:EB:0E:7D:93"
+# For my raspberry pi
+#bd_addr = "B8:27:EB:0E:7D:93"
+# For Gabe's laptop
+bd_addr = "48:D7:05:E7:C7:AA"
 
 # Bluetooth setup
 port = 1
