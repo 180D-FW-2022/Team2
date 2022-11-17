@@ -9,7 +9,7 @@ bd_addr = "B8:27:EB:0E:7D:93"
 # Bluetooth setup
 port = 1
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-#sock.connect((bd_addr, port))
+sock.connect((bd_addr, port))
 
 # Starting video feed
 cap = cv.VideoCapture(0)

@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 import bluetooth
-import time
 
 # Replace with bluetooth MAC address of your raspberry pi
 bd_addr = "B8:27:EB:0E:7D:93"
@@ -11,11 +10,25 @@ port = 1
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((bd_addr, port))
 
+# Starting video feed
 cap = cv.VideoCapture(0)
+
+# Rescaling video frame
+_, frame = cap.read()
+scale_percent = 100 # percent of original size
+width = int(frame.shape[1] * scale_percent / 100)
+height = int(frame.shape[0] * scale_percent / 100)
+
+# Initiating midpoint of bounding boxes
+midpoint = (0,0)
 
 while(1):
     # Take each frame
     _, frame = cap.read()
+
+    # Resizing frame
+    dim = (width, height)
+    frame = cv.resize(frame, dim, interpolation = cv.INTER_AREA)
 
     # Convert BGR to HSV
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
@@ -40,11 +53,13 @@ while(1):
         x, y, w, h = rect
         cv.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 2)
 
-    cv.imshow('frame', frame)
+    # Sending video stream
+    sock.send(frame)
 
     # Press esc to exit
     k = cv.waitKey(5) & 0xFF
     if k == 27:
         break
 
+sock.close()
 cv.destroyAllWindows()
