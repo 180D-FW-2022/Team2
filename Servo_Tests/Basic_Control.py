@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     dutySpread = [54, 57.0, 57.7]
 
-    dutySpread = np.arange(58, 65, 1)
+    dutySpread = np.arange(60, 65, 1)
 
     duty1 = 65
     duty2 = 35
@@ -46,7 +46,7 @@ if __name__ == '__main__':
         pwm2.ChangeDutyCycle(duty)
         #pwm3.ChangeDutyCycle(58)
         print(duty)
-        time.sleep(12)
+        time.sleep(20)
 
 
     pwm1.stop()
