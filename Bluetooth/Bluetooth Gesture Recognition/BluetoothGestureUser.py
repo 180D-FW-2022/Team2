@@ -59,16 +59,18 @@ while(1):
     # Sends out commands based on position
     if midpoint[0] < (width/2) :
         if midpoint[1] < (height/2):
-            print("q")
+            sock.send("q")
         elif midpoint[1] > (height/2):
-            print("a")
+            sock.send("a")
     elif midpoint[0] > (width/2):
         if midpoint[1] < (height/2):
-            print("o")
+            sock.send("o")
         elif midpoint[1] > (height/2):
-            print("l")
+            sock.send("l")
     
     cv.imshow('frame', frame)
+
+    time.sleep(0.5)
 
     # Press esc to exit
     k = cv.waitKey(5) & 0xFF

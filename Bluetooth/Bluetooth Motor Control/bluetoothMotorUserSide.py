@@ -19,6 +19,6 @@ while(1):
     sock.send(command)
 
     # Sends every 2 seconds
-    time.sleep(2)
+    time.sleep(0.5)
 
 sock.close()
