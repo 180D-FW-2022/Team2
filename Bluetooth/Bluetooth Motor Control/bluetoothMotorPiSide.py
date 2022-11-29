@@ -18,7 +18,8 @@ pin_right = 33
 freq = 400
 
 cw_left = 49
-ccw_left = 65
+# tried 65
+ccw_left = 68
 cw_right = 48
 ccw_right = 61
 stop = 0
@@ -48,6 +49,7 @@ while(1):
     time.sleep(0.5)
 
     pwm_left.stop()
+    pwm_right.stop()
 
 GPIO.cleanup()
 client_sock.close()
