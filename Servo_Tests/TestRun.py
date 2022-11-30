@@ -72,12 +72,12 @@ if __name__ == '__main__':
     pwm1.ChangeDutyCycle(46)
     pwm2.ChangeDutyCycle(39)
     print("Right")
-    time.sleep(5)
+    time.sleep(4.8)
 
     pwm1.ChangeDutyCycle(35)
     pwm2.ChangeDutyCycle(69)
     print("Forward")
-    time.sleep(4)
+    time.sleep(3)
 
     pwm1.stop()
     pwm2.stop()
