@@ -15,7 +15,7 @@ GPIO.setmode(GPIO.BOARD)
 
 pin_left = 32
 pin_right = 33
-#trieed 400, 300
+#tried 400, 300
 freq_cw = 200
 #tried 500
 freq_ccw = 600
@@ -53,7 +53,7 @@ while(1):
         pwm_right.ChangeFrequency(freq_ccw)
         pwm_right.start(duty_right)
 
-    time.sleep(0.5)
+    time.sleep(0.1)
 
     pwm_left.stop()
     pwm_right.stop()

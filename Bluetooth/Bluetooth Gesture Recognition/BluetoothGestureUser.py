@@ -70,7 +70,7 @@ while(1):
     
     cv.imshow('frame', frame)
 
-    time.sleep(0.5)
+    time.sleep(0.1)
 
     # Press esc to exit
     k = cv.waitKey(5) & 0xFF
