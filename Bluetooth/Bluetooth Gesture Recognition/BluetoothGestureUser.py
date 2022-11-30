@@ -57,16 +57,19 @@ while(1):
 
     # Checks to see where midpoint is on the screen
     # Sends out commands based on position
-    if midpoint[0] < (width/2) :
-        if midpoint[1] < (height/2):
-            sock.send("q")
-        elif midpoint[1] > (height/2):
-            sock.send("a")
-    elif midpoint[0] > (width/2):
-        if midpoint[1] < (height/2):
-            sock.send("o")
-        elif midpoint[1] > (height/2):
-            sock.send("l")
+    if midpoint[0] != 0 and midpoint[1] != 0:
+        if midpoint[0] < (width/2) :
+           if midpoint[1] < (height/2):
+               sock.send("q")
+           elif midpoint[1] > (height/2):
+                sock.send("a")
+        elif midpoint[0] > (width/2):
+            if midpoint[1] < (height/2):
+                sock.send("o")
+            elif midpoint[1] > (height/2):
+                sock.send("l")
+    # Resets midpoint
+    midpoint = (0,0)
     
     cv.imshow('frame', frame)
 
