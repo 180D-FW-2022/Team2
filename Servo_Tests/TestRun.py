@@ -57,7 +57,7 @@ if __name__ == '__main__':
     pwm1.ChangeDutyCycle(63)
     pwm2.ChangeDutyCycle(68)
     print("Left")
-    time.sleep(4.5)
+    time.sleep(4.25)
 
     pwm1.ChangeDutyCycle(65)
     pwm2.ChangeDutyCycle(38)
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     pwm1.ChangeDutyCycle(46)
     pwm2.ChangeDutyCycle(39)
     print("Right")
-    time.sleep(5.5)
+    time.sleep(5.25)
 
     pwm1.ChangeDutyCycle(35)
     pwm2.ChangeDutyCycle(69)
