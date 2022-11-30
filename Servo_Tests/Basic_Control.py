@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     #dutySpread = [54, 57.0, 57.7]
 
-    dutySpread = np.arange(58, 65, 1)
+    dutySpread = np.arange(65, 69, 1)
 
     duty1 = 63
     duty2 = 40
