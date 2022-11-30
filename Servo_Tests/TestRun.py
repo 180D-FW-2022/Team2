@@ -37,7 +37,7 @@ if __name__ == '__main__':
     pwm1.ChangeDutyCycle(35)
     pwm2.ChangeDutyCycle(71.4)
     print("Forward")
-    time.sleep(3)
+    time.sleep(5)
 
     pwm1.ChangeDutyCycle(65)
     pwm2.ChangeDutyCycle(40)
@@ -49,25 +49,25 @@ if __name__ == '__main__':
     print("Left")
     time.sleep(2)
 
-    pwm1.ChangeDutyCycle(50)
-    pwm2.ChangeDutyCycle(41)
+    pwm1.ChangeDutyCycle(48)
+    pwm2.ChangeDutyCycle(40)
     print("Right")
     time.sleep(2)
 
     pwm1.ChangeDutyCycle(63)
     pwm2.ChangeDutyCycle(68)
     print("Left")
-    time.sleep(3)
+    time.sleep(5)
 
     pwm1.ChangeDutyCycle(65)
     pwm2.ChangeDutyCycle(40)
     print("Backward")
     time.sleep(3)
 
-    pwm1.ChangeDutyCycle(50)
-    pwm2.ChangeDutyCycle(41)
+    pwm1.ChangeDutyCycle(48)
+    pwm2.ChangeDutyCycle(40)
     print("Right")
-    time.sleep(3)
+    time.sleep(9)
 
     pwm1.ChangeDutyCycle(35)
     pwm2.ChangeDutyCycle(71.4)
