@@ -1,27 +1,9 @@
-'''
-Sample Usage:-
-python pose_estimation.py --K_Matrix calibration_matrix.npy --D_Coeff distortion_coefficients.npy --type DICT_5X5_100
-'''
-
-
 import numpy as np
 import cv2
-import sys
 from utils import ARUCO_DICT
-import time
 
 
 def pose_esitmation(frame, aruco_dict_type, matrix_coefficients, distortion_coefficients):
-
-    '''
-    frame - Frame from the video stream
-    matrix_coefficients - Intrinsic matrix of the calibrated camera
-    distortion_coefficients - Distortion coefficients associated with your camera
-
-    return:-
-    frame - The frame with the axis drawn on it
-    '''
-
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.aruco_dict = cv2.aruco.Dictionary_get(aruco_dict_type)
     parameters = cv2.aruco.DetectorParameters_create()
@@ -38,7 +20,7 @@ def pose_esitmation(frame, aruco_dict_type, matrix_coefficients, distortion_coef
             cv2.aruco.drawDetectedMarkers(frame, corners) 
 
             # Draw Axis
-            cv2.drawFrameAxes(frame, matrix_coefficients, distortion_coefficients, rvec, tvec, 0.01)
+            cv2.drawFrameAxes(frame, matrix_coefficients, distortion_coefficients, rvec, tvec, length=.02)
 
     return frame, rvec, tvec
 
@@ -50,16 +32,17 @@ if __name__ == '__main__':
     distortion_coefficients_path = 'distortion_coefficients.npy'
     
     k = np.load(calibration_matrix_path)
-    print(k)
     d = np.load(distortion_coefficients_path)
-    print(d)
+    # print(k)
+    # print(d)
 
     # video = cv2.VideoCapture(0)
     # time.sleep(2.0)
 
     frame = cv2.imread('../test_files/still_img.jpg')
     output, rvec, tvec = pose_esitmation(frame, aruco_dict_type, k, d)
-
+    print(rvec)
+    print(tvec)
     cv2.imshow('Estimated Pose', output)
 
     cv2.waitKey(0)
