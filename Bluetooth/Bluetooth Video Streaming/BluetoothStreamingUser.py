@@ -23,9 +23,9 @@ print("Accepted connection from ",address)
 '''
 
 while(1):
-    #data = client_sock.recv(1024)
-    #print("Received:\n" + str(data))
-    print("working")
+    raw = sock.recv(1024)
+    #data = raw.decode('utf-8')
+    print("Received:\n" + str(raw))
     #cv.imshow('frame', data)
 
     time.sleep(0.5)
