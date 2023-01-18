@@ -28,7 +28,7 @@ def red(i):
     GPIO.output(bluePin[i],GPIO.LOW)
 
 def redall():
-    for i in range(5)
+    for i in range(5):
         GPIO.output(redPin[i],GPIO.HIGH)
         GPIO.output(greenPin[i],GPIO.LOW)
         GPIO.output(bluePin[i],GPIO.LOW)
@@ -55,4 +55,11 @@ def fred():
     redall()
     sleep(.5)
     turnOff()
-    
+   
+green(0)
+green(1)
+yellow(2)
+red(3)
+red(4)
+sleep(2)
+turnOff()
