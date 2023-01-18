@@ -2,16 +2,14 @@ import cv2 as cv
 import numpy as np
 import bluetooth
 
+# Replace with bluetooth MAC address of your device
+# For my surface laptop
+bd_addr = "70:CF:49:1D:56:5E"
 
 # Bluetooth setup
-server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-
 port = 1
-server_sock.bind(("", port))
-server_sock.listen(1)
-
-client_sock,address = server_sock.accept()
-print("Accepted connection from ",address)
+sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+sock.connect((bd_addr, port))
 
 # Starting video feed
 cap = cv.VideoCapture(0)
@@ -57,13 +55,12 @@ while(1):
         cv.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 2)
 
     # Sending video stream
-    server_sock.send(frame)
+    sock.send(frame)
 
     # Press esc to exit
     k = cv.waitKey(5) & 0xFF
     if k == 27:
         break
 
-client_sock.close()
-server_sock.close()
+sock.close()
 cv.destroyAllWindows()
