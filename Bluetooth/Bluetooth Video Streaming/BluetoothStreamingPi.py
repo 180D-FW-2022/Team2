@@ -2,16 +2,16 @@ import cv2 as cv
 import numpy as np
 import bluetooth
 
-# Replace with bluetooth MAC address of your raspberry pi
-# For my raspberry pi
-#bd_addr = "B8:27:EB:0E:7D:93"
-# For Gabe's laptop
-bd_addr = "48:D7:05:E7:C7:AA"
 
 # Bluetooth setup
+server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+
 port = 1
-sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-sock.connect((bd_addr, port))
+server_sock.bind(("", port))
+server_sock.listen(1)
+
+client_sock,address = server_sock.accept()
+print("Accepted connection from ",address)
 
 # Starting video feed
 cap = cv.VideoCapture(0)
@@ -57,12 +57,15 @@ while(1):
         cv.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 2)
 
     # Sending video stream
-    sock.send(frame)
+    # sock.send(frame)
+
+    print(type(frame))
 
     # Press esc to exit
     k = cv.waitKey(5) & 0xFF
     if k == 27:
         break
 
-sock.close()
+client_sock.close()
+server_sock.close()
 cv.destroyAllWindows()
