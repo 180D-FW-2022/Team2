@@ -17,7 +17,9 @@ print("Accepted connection from ",address)
 cap = cv.VideoCapture(0)
 
 # Rescaling video frame
-_, frame = cap.read()
+ret, frame = cap.read()
+if not ret:
+    print("no pic")
 scale_percent = 100 # percent of original size
 width = int(frame.shape[1] * scale_percent / 100)
 height = int(frame.shape[0] * scale_percent / 100)
