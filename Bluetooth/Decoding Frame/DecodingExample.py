@@ -54,7 +54,7 @@ while(1):
     print(type(frame))
     '''
 
-    np_bytes= BytesIO()
+    np_bytes = BytesIO()
     np.save(np_bytes, frame, allow_pickle=True)
 
     np_bytes = np_bytes.getvalue()
@@ -62,7 +62,7 @@ while(1):
 
     decode = BytesIO(np_bytes)
     decoded = np.load(decode, allow_pickle=True)
-    print(decoded)
+    #print(decoded)
 
     if np.array_equal(frame, decoded):
         print("true")

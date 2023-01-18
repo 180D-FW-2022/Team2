@@ -1,6 +1,8 @@
 import cv2 as cv
+import numpy as np
 import bluetooth
 import time
+from io import BytesIO
 
 # Bluetooth setup
 # Replace with bluetooth MAC address of your raspberry pi
@@ -11,21 +13,18 @@ port = 1
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((bd_addr, port))
 
-'''
-server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-
-port = 1
-server_sock.bind(("", port))
-server_sock.listen(1)
-
-client_sock,address = server_sock.accept()
-print("Accepted connection from ",address)
-'''
-
 while(1):
     raw = sock.recv(1024)
     #data = raw.decode('utf-8')
-    print("Received:\n" + str(raw))
+    print(type(raw))
+
+    data = BytesIO(raw)
+    frame = np.load(data, allow_pickle=True)
+    print(type(frame))
+    print(frame.size)
+    print(frame.shape)
+
+    #print("Received:\n" + str(raw))
     #cv.imshow('frame', data)
 
     time.sleep(0.5)
