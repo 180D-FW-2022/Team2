@@ -17,9 +17,7 @@ print("Accepted connection from ",address)
 cap = cv.VideoCapture(0)
 
 # Rescaling video frame
-ret, frame = cap.read()
-if not ret:
-    print("no pic")
+_, frame = cap.read()
 scale_percent = 100 # percent of original size
 width = int(frame.shape[1] * scale_percent / 100)
 height = int(frame.shape[0] * scale_percent / 100)
@@ -59,9 +57,7 @@ while(1):
         cv.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 2)
 
     # Sending video stream
-    # sock.send(frame)
-
-    print(type(frame))
+    server_sock.send(frame)
 
     # Press esc to exit
     k = cv.waitKey(5) & 0xFF
