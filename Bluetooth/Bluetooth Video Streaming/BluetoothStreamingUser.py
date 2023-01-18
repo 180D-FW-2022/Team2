@@ -15,10 +15,10 @@ sock.connect((bd_addr, port))
 
 while(1):
     data = sock.recv(1024)
-    print("Received: " + str(data))
+    #print("Received: " + str(data))
+    
+    cv.imshow('frame', data)
 
-    #cv.imshow('frame', data)
-
-    time.sleep(2)
+    #time.sleep(2)
 
 sock.close()
