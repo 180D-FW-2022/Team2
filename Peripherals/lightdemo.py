@@ -6,4 +6,3 @@ while True:
     fyellow()
     fred()
     turnOff()
-
