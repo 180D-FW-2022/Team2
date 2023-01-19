@@ -65,7 +65,7 @@ while(1):
     np_bytes = BytesIO()
     np.save(np_bytes, frame, allow_pickle=True)
 
-    np_bytes = np_bytes.np_bytes
+    np_bytes = np_bytes.getvalue()
 
     client_sock.send(np_bytes)
     print(type(np_bytes))

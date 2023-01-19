@@ -2,6 +2,8 @@ import cv2 as cv
 import numpy as np
 import time
 from io import BytesIO
+import sys
+import zlib
 
 # Starting video feed
 cap = cv.VideoCapture(0)
@@ -53,6 +55,8 @@ while(1):
     print(frame.dtype)
     print(type(frame))
     '''
+
+    print(sys.getsizeof(frame))
 
     np_bytes = BytesIO()
     np.save(np_bytes, frame, allow_pickle=True)
