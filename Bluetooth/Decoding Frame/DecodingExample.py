@@ -1,18 +1,9 @@
 import cv2 as cv
 import numpy as np
-import bluetooth
 import time
 from io import BytesIO
-
-# Bluetooth setup
-server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-
-port = 1
-server_sock.bind(("", port))
-server_sock.listen(1)
-
-client_sock,address = server_sock.accept()
-print("Accepted connection from ",address)
+import sys
+import zlib
 
 # Starting video feed
 cap = cv.VideoCapture(0)
@@ -58,25 +49,35 @@ while(1):
         cv.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 2)
 
     '''
-    # Sending video stream
-    client_sock.send(frame)
+    print(frame)
+    print(frame.size)
+    print(frame.shape)
+    print(frame.dtype)
+    print(type(frame))
     '''
+
+    print(sys.getsizeof(frame))
 
     np_bytes = BytesIO()
     np.save(np_bytes, frame, allow_pickle=True)
 
     np_bytes = np_bytes.getvalue()
-
-    client_sock.send(np_bytes)
     print(type(np_bytes))
 
-    time.sleep(0.5)
+    decode = BytesIO(np_bytes)
+    decoded = np.load(decode, allow_pickle=True)
+    #print(decoded)
+
+    if np.array_equal(frame, decoded):
+        print("true")
+    else:
+        print("false")
+
+    time.sleep(2)
 
     # Press esc to exit
     k = cv.waitKey(5) & 0xFF
     if k == 27:
         break
 
-client_sock.close()
-server_sock.close()
 cv.destroyAllWindows()
