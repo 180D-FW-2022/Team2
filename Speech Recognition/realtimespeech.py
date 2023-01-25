@@ -1,16 +1,11 @@
 from pocketsphinx import LiveSpeech
-import time
 
-start = time.time()
 for phrase in LiveSpeech(): 
-   if str(phrase) == "right":
+   if "right" in str(phrase):
       print("turning right")
-   elif str(phrase) == "left":
+   if "left" in str(phrase):
       print("turning left")
-   elif str(phrase) == "shoot":
+   if "shoot" in str(phrase):
       print("shooting")
-   elif str(phrase) == "reload":
+   if "reload" in str(phrase):
       print("reloading")
-   else:
-      print("not a keyword")
-   print(time.time()-start)
