@@ -1,6 +1,5 @@
-from lightstests import turnOff, startUp, setHealth
+from lightfunctions import turnOff, startUp, setHealth
 from time import sleep
-import playsound
 from subprocess import call
 import threading
 def shot():
