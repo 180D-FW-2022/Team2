@@ -19,13 +19,13 @@ pin_right = 33
 freq_cw = 200
 freq_ccw = 600
 
-duty = 50
+duty_left = 50
+duty_right = 50
 
 GPIO.setwarnings(False)
 GPIO.setup(pin_left, GPIO.OUT)
 GPIO.setup(pin_right, GPIO.OUT)
 pwm_left = GPIO.PWM(pin_left, freq_cw)
-
 pwm_right = GPIO.PWM(pin_right, freq_cw)
 
 while(1):
@@ -35,20 +35,20 @@ while(1):
     if str(data).find("q") != -1:
         #print("Moving left motor forward.")
         pwm_left.ChangeFrequency(freq_ccw)
-        pwm_left.start(duty)
+        pwm_left.start(duty_left)
     elif str(data).find("a") != -1:
         #print("Moving left motor backwards.")
         pwm_left.ChangeFrequency(freq_cw)
-        pwm_left.start(duty)
+        pwm_left.start(duty_left)
     # For the right motor
     if str(data).find("o") != -1:
         #print("Moving right motor forward.")
         pwm_right.ChangeFrequency(freq_cw)
-        pwm_right.start(duty)
+        pwm_right.start(duty_right)
     elif str(data).find("l") != -1:
         #print("Moving right motor backwards.")
         pwm_right.ChangeFrequency(freq_ccw)
-        pwm_right.start(duty)
+        pwm_right.start(duty_right)
 
     time.sleep(0.1)
 
