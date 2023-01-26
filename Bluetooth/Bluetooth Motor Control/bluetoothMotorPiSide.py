@@ -15,13 +15,11 @@ GPIO.setmode(GPIO.BOARD)
 
 pin_left = 32
 pin_right = 33
-#tried 400, 300
+
 freq_cw = 200
-#tried 500
 freq_ccw = 600
-# tried 
+
 duty_left = 50
-# tried 
 duty_right = 50
 
 GPIO.setwarnings(False)
@@ -44,7 +42,7 @@ while(1):
         pwm_left.ChangeFrequency(freq_cw)
         pwm_left.start(duty_left)
     # For the right motor
-    elif str(data) == "b'o'":
+    if str(data) == "b'o'":
         #print("Moving right motor forward.")
         pwm_right.ChangeFrequency(freq_cw)
         pwm_right.start(duty_right)

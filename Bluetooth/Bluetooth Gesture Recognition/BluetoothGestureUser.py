@@ -21,7 +21,17 @@ width = int(frame.shape[1] * scale_percent / 100)
 height = int(frame.shape[0] * scale_percent / 100)
 
 # Initiating midpoint of bounding boxes
-midpoint = (0,0)
+midpoint_blue = (0,0)
+midpoint_green = (0,0)
+
+# define range of blue color in HSV
+lower_blue = np.array([110,50,50])
+upper_blue = np.array([130,255,255])
+
+# define range of green color in HSV
+lower_green = np.array([40,40,40])
+upper_green = np.array([80,255,255])
+
 
 while(1):
     # Take each frame
@@ -34,42 +44,52 @@ while(1):
     # Convert BGR to HSV
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
 
-    # define range of blue color in HSV
-    lower_blue = np.array([110,50,50])
-    upper_blue = np.array([130,255,255])
-
-    # Threshold the HSV image to get only blue colors
-    mask = cv.inRange(hsv, lower_blue, upper_blue)
+    # Threshold the HSV image to get only blue and red colors
+    mask_blue = cv.inRange(hsv, lower_blue, upper_blue)
+    mask_green = cv.inRange(hsv, lower_green, upper_green)
 
     # Bitwise-AND mask and original image
-    res = cv.bitwise_and(frame,frame, mask= mask)
+    res_blue = cv.bitwise_and(frame,frame, mask= mask_blue)
+    res_green = cv.bitwise_and(frame,frame, mask= mask_green)
 
     # Creating bounding boxes
-    contours, _ = cv.findContours(mask, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
-    for c in contours:
+    contours_blue, _ = cv.findContours(mask_blue, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
+    for c in contours_blue:
         rect = cv.boundingRect(c)
         area = cv.contourArea(c)
         if area < 500:
             continue
         x, y, w, h = rect
-        cv.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 2)
-        midpoint = (x+(w/2),y+(h/2))
+        cv.rectangle(frame, (x,y), (x+w, y+h), (255,0,0), 2)
+        midpoint_blue = (x+(w/2),y+(h/2))
+
+    contours_green, _ = cv.findContours(mask_green, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
+    for c in contours_green:
+        rect = cv.boundingRect(c)
+        area = cv.contourArea(c)
+        if area < 500:
+            continue
+        x, y, w, h = rect
+        cv.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), 2)
+        midpoint_green = (x+(w/2),y+(h/2))
 
     # Checks to see where midpoint is on the screen
-    # Sends out commands based on position
-    if midpoint[0] != 0 and midpoint[1] != 0:
-        if midpoint[0] < (width/2) :
-           if midpoint[1] < (height/2):
-               sock.send("q")
-           elif midpoint[1] > (height/2):
-                sock.send("a")
-        elif midpoint[0] > (width/2):
-            if midpoint[1] < (height/2):
-                sock.send("o")
-            elif midpoint[1] > (height/2):
-                sock.send("l")
-    # Resets midpoint
-    midpoint = (0,0)
+    # Updates command based on position
+    command = ""
+    if midpoint_blue[0] != 0 and midpoint_blue[1] != 0:
+        if midpoint_blue[1] < (height/2):
+            command += "q"
+        elif midpoint_blue[1] > (height/2):
+            command += "a"
+    if midpoint_green[0] != 0 and midpoint_green[1] != 0:
+        if midpoint_green[1] < (height/2):
+            command += "o"
+        elif midpoint_green[1] > (height/2):
+            command += "l"
+    sock.send(command)
+    # Resets midpoints
+    midpoint_blue = (0,0)
+    midpoint_green = (0,0)
     
     cv.imshow('frame', frame)
 
