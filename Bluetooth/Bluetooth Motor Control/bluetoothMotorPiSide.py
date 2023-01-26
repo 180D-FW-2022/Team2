@@ -33,20 +33,20 @@ while(1):
     data = client_sock.recv(1024)
     #print("Received: " + str(data))
 
-    if str(data) == "b'q'":
+    if str(data).find("q") != -1:
         #print("Moving left motor forward.")
         pwm_left.ChangeFrequency(freq_ccw)
         pwm_left.start(duty_left)
-    elif str(data) == "b'a'":
+    elif str(data).find("a") != -1:
         #print("Moving left motor backwards.")
         pwm_left.ChangeFrequency(freq_cw)
         pwm_left.start(duty_left)
     # For the right motor
-    if str(data) == "b'o'":
+    if str(data).find("o") != -1:
         #print("Moving right motor forward.")
         pwm_right.ChangeFrequency(freq_cw)
         pwm_right.start(duty_right)
-    elif str(data) == "b'l'":
+    elif str(data).find("l") != -1:
         #print("Moving right motor backwards.")
         pwm_right.ChangeFrequency(freq_ccw)
         pwm_right.start(duty_right)
