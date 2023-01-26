@@ -1,18 +1,15 @@
 from lightfunctions import turnOff, startUp, setHealth
+from soundfunctions import shoot
 from time import sleep
-from subprocess import call
-import threading
-def shot():
-    call(['aplay','shot.wav'])
-playshot=threading.Thread(target=shot)
+
+
 startUp()
 sleep(2)
-playshot.start()
-playshot=threading.Thread(target=shot)
+shoot()
 turnOff()
 sleep(5)
 j=100
-playshot.start()
+shoot()
 while j>(-1):
     sleep(0.5)
     setHealth(j)
