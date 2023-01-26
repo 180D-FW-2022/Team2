@@ -30,7 +30,7 @@ pwm_right = GPIO.PWM(pin_right, freq_cw)
 
 while(1):
     data = client_sock.recv(1024)
-    #print("Received: " + str(data))
+    print("Received: " + str(data))
 
     if str(data).find("q") != -1:
         #print("Moving left motor forward.")
