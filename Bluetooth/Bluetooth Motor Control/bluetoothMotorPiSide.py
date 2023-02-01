@@ -16,7 +16,9 @@ GPIO.setmode(GPIO.BOARD)
 pin_left = 32
 pin_right = 33
 
-freq_cw = 200
+# tried 200
+freq_cw = 100
+# tried 600
 freq_ccw = 600
 
 duty_left = 50
@@ -32,7 +34,7 @@ while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
 
-    '''
+    
     # For the left motor
     if str(data).find("q") != -1:
         #print("Moving left motor forward.")
@@ -53,41 +55,7 @@ while(1):
         #print("Moving right motor backwards.")
         pwm_right.ChangeFrequency(freq_ccw)
         pwm_right.start(duty_right)
-    '''
     
-    if str(data) == "b'q'":
-        pwm_left.ChangeFrequency(freq_ccw)
-        pwm_left.start(duty_left)
-    elif str(data) == "b'a'":
-        pwm_left.ChangeFrequency(freq_cw)
-        pwm_left.start(duty_left)
-    elif str(data) == "b'o'":
-        pwm_right.ChangeFrequency(freq_cw)
-        pwm_right.start(duty_left)
-    elif str(data) == "b'l'":
-        pwm_right.ChangeFrequency(freq_ccw)
-        pwm_right.start(duty_left)
-    elif str(data) == "b'qo'":
-        pwm_left.ChangeFrequency(freq_ccw)
-        pwm_left.start(duty_left)
-        pwm_right.ChangeFrequency(freq_cw)
-        pwm_right.start(duty_left)
-    elif str(data) == "b'al'":
-        pwm_left.ChangeFrequency(freq_cw)
-        pwm_left.start(duty_left)
-        pwm_right.ChangeFrequency(freq_ccw)
-        pwm_right.start(duty_right)
-    elif str(data) == "b'ql'":
-        pwm_left.ChangeFrequency(freq_ccw)
-        pwm_left.start(duty_left)
-        pwm_right.ChangeFrequency(freq_ccw)
-        pwm_right.start(duty_left)
-    elif str(data) == "b'ao'":
-        pwm_left.ChangeFrequency(freq_cw)
-        pwm_left.start(duty_left)
-        pwm_right.ChangeFrequency(freq_cw)
-        pwm_right.start(duty_left)
-
     time.sleep(0.1)
 
     pwm_left.stop()
