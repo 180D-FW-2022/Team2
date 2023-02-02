@@ -32,7 +32,6 @@ if __name__ == '__main__':
     pwm1.start(0)
     pwm2.start(0)
     print("Hold on to your butts!")
-    time.sleep(5)
 
     pwm1.ChangeDutyCycle(35)
     pwm2.ChangeDutyCycle(69)
