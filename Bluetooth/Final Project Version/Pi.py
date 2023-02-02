@@ -46,7 +46,8 @@ while(1):
 
     # Sound
     if str(data).find("y") != -1:
-        shoot()
+        print("Shooting.")
+        #shoot()
     
     # For the left motor
     if str(data).find("q") != -1:
