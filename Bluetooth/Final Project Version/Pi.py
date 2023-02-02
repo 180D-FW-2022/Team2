@@ -78,7 +78,7 @@ while(1):
         pwm_right.ChangeDutyCycle(65)
         #pwm_right.start(duty_right)
     
-    time.sleep(0.1)
+    time.sleep(3)
 
     pwm_left.ChangeDutyCycle(0)
     pwm_right.ChangeDutyCycle(0)

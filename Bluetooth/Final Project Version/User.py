@@ -5,8 +5,10 @@ import time
 from pocketsphinx import LiveSpeech
 import threading
 
-# Replace with bluetooth MAC address of your raspberry pi
-bd_addr = "B8:27:EB:0E:7D:93"
+# Bluetooth MAC address of Brian's raspberry pi
+#bd_addr = "B8:27:EB:0E:7D:93"
+# Bluetooth MAC address of Gabe's raspberry pi
+bd_addr = "B8:27:EB:4E:35:33"
 
 # Bluetooth setup
 port = 1
