@@ -44,8 +44,7 @@ def shoot():
     playshot.start()
 
 while(1):
-    #data = client_sock.recv(1024)
-    data = "qo"
+    data = client_sock.recv(1024)
     print("Received: " + str(data))
 
     # Sound
