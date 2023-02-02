@@ -2,6 +2,8 @@ import cv2 as cv
 import numpy as np
 import bluetooth
 import time
+from pocketsphinx import LiveSpeech
+import threading
 
 # Replace with bluetooth MAC address of your raspberry pi
 bd_addr = "B8:27:EB:0E:7D:93"
@@ -32,7 +34,26 @@ upper_blue = np.array([130,255,255])
 lower_green = np.array([40,40,40])
 upper_green = np.array([80,255,255])
 
+# Sound and threading for sound
+def recognizeshoot():
+    speech = LiveSpeech(keyphrase='shoot', kws_threshold=1e-10)
+    for phrase in speech:
+        sock.send("y")
 
+def recognizereload():
+    speech = LiveSpeech(keyphrase='reload', kws_threshold=1e-20)
+    for phrase in speech:
+        sock.send("r")
+
+def speech():
+    speechshot=threading.Thread(target=recognizeshoot)
+    speechreload=threading.Thread(target=recognizereload)
+    speechshot.daemon = True
+    speechreload.daemon = True
+    speechshot.start()
+    speechreload.start()
+
+speech()
 while(1):
     # Take each frame
     _, frame = cap.read()

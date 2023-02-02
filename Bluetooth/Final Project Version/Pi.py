@@ -1,6 +1,8 @@
 import bluetooth
 import time
 import RPi.GPIO as GPIO
+from subprocess import call
+import threading
 
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
@@ -30,10 +32,21 @@ GPIO.setup(pin_right, GPIO.OUT)
 pwm_left = GPIO.PWM(pin_left, freq_cw)
 pwm_right = GPIO.PWM(pin_right, freq_cw)
 
+# Sound and threading for sound
+def shotsound():
+    call(['aplay','shoot.wav'])
+
+def shoot():
+    playshot=threading.Thread(target=shotsound)
+    playshot.start()
+
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
 
+    # Sound
+    if str(data).find("y") != -1:
+        shoot()
     
     # For the left motor
     if str(data).find("q") != -1:
