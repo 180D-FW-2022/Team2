@@ -17,7 +17,7 @@ if __name__ == '__main__':
     # Frequency
     freq = 1000
     # Duty Cycle
-    duty = 100
+    duty = 25
 
     GPIO.setwarnings(False)
 
