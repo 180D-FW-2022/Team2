@@ -45,15 +45,6 @@ if __name__ == '__main__':
     duty1 = 65
     duty2 = 40
     #69.80000000000003
-'''
-    for duty in dutySpread:
-        pwm1.ChangeDutyCycle(duty1)
-        pwm2.ChangeDutyCycle(duty)
-        #pwm3.ChangeDutyCycle(58)
-        print(duty)
-        time.sleep(10)
-'''
-
 
     pwm1.stop()
     pwm2.stop()
