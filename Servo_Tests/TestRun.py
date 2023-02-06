@@ -33,24 +33,24 @@ if __name__ == '__main__':
     pwm2.start(0)
     print("Hold on to your butts!")
 
-    pwm1.ChangeDutyCycle(35)
-    pwm2.ChangeDutyCycle(69)
+    pwm1.ChangeDutyCycle(45)
+    pwm2.ChangeDutyCycle(65)
     print("Forward")
     time.sleep(5)
 
     pwm1.ChangeDutyCycle(65)
-    pwm2.ChangeDutyCycle(37)
+    pwm2.ChangeDutyCycle(45)
     print("Backward")
     time.sleep(5)
 
     pwm1.ChangeDutyCycle(65)
-    pwm2.ChangeDutyCycle(69)
+    pwm2.ChangeDutyCycle(65)
     # 63,68
     print("Left")
     time.sleep(2)
 
-    pwm1.ChangeDutyCycle(35)
-    pwm2.ChangeDutyCycle(37)
+    pwm1.ChangeDutyCycle(45)
+    pwm2.ChangeDutyCycle(45)
     # 46,39
     print("Right")
     time.sleep(5)
