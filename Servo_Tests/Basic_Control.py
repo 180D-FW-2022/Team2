@@ -15,7 +15,7 @@ if __name__ == '__main__':
     pin2 = 33
     pin3 = 37
     # Frequency
-    freq = 400
+    freq = 500
     # Duty Cycle
     duty = 60
 
