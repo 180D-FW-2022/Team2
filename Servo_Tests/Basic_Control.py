@@ -15,9 +15,9 @@ if __name__ == '__main__':
     pin2 = 33
     pin3 = 37
     # Frequency
-    freq = 500
+    freq = 1000
     # Duty Cycle
-    duty = 60
+    duty = 100
 
     GPIO.setwarnings(False)
 
@@ -32,26 +32,34 @@ if __name__ == '__main__':
     pwm1.start(duty)
     pwm2.start(duty)
     #pwm3.start(duty)
-
+    print(duty)
+    time.sleep(10)
     #dutySpread = [54, 57.0, 57.7]
 
     dutySpread = np.arange(35, 45, 1)
 
+    pwm1.ChangeDutyCycle(50)
+    pwm2.ChangeDutyCycle(50)
+    print(50)
+    time.sleep(10)
     duty1 = 65
     duty2 = 40
     #69.80000000000003
-
+'''
     for duty in dutySpread:
         pwm1.ChangeDutyCycle(duty1)
         pwm2.ChangeDutyCycle(duty)
         #pwm3.ChangeDutyCycle(58)
         print(duty)
         time.sleep(10)
-
+'''
 
 
     pwm1.stop()
     pwm2.stop()
+
+
+
     #pwm3.stop()
 
     GPIO.cleanup()
