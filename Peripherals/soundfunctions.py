@@ -2,10 +2,10 @@ from subprocess import call
 import threading
 
 def shotsound():
-    call(['sudo', 'aplay', 'shoot.wav'])
+    call(['sudo', 'aplay', 'shoot.wav', '-q'])
 
 def reloadsound():
-    call(['sudo', 'aplay', 'reload.wav'])
+    call(['sudo', 'aplay', 'reload.wav', '-q'])
 
 
 def shoot():
