@@ -1,9 +1,13 @@
 import bluetooth
 import time
 import RPi.GPIO as GPIO
-from subprocess import call
-import threading
+from soundfunctions import shoot, reload
+from lightfunctions import turnOff, startUp, setHealth
 
+#adding to reset lights
+turnOff()
+#health variable for demo
+health = 100
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
 port = 1
@@ -34,7 +38,7 @@ pwm_right = GPIO.PWM(pin_right, freq_cw)
 
 pwm_left.start(0)
 pwm_right.start(0)
-
+''' commenting for the time being because we are just importing shoot
 # Sound and threading for sound
 def shotsound():
     call(['aplay','shoot.wav'])
@@ -42,15 +46,19 @@ def shotsound():
 def shoot():
     playshot=threading.Thread(target=shotsound)
     playshot.start()
-
+'''
+startUp()
+setHealth(health)
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
 
     # Sound
     if str(data).find("y") != -1:
-        print("Shooting.")
-        #shoot()
+        #print("Shooting.")
+        shoot()
+        health=health-25
+        setHealth(health)
     
     # For the left motor
     if str(data).find("q") != -1:
