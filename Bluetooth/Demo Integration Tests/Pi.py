@@ -60,6 +60,10 @@ while(1):
         health=health-25
         setHealth(health)
     
+    if str(data).find("r") != -1:
+        print("Reloading.")
+        reload()
+        
     # For the left motor
     if str(data).find("q") != -1:
         print("Moving left motor forward.")
