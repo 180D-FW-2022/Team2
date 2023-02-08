@@ -43,13 +43,14 @@ while(1):
     # Sound
     if str(data).find("y") != -1 and reloaded == True:
         print("Shooting.")
+        reloaded = False
         shoot()
         #health=health-25
         #setHealth(health)
 
     if str(data).find("r") != -1:
         print("Reloading.")
-        reloaded = False
+        reloaded = True
         reload()
     
     # For the left motor
