@@ -41,14 +41,14 @@ while(1):
     print("Received: " + str(data))
 
     # Sound
-    if str(data).find("y") != -1 and reloaded == True:
+    if (str(data).find("y") != -1) and (reloaded == True):
         print("Shooting.")
         reloaded = False
         shoot()
         #health=health-25
         #setHealth(health)
 
-    if str(data).find("r") != -1:
+    if (str(data).find("r") != -1) and (reloaded == False):
         print("Reloading.")
         reloaded = True
         reload()
