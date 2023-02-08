@@ -69,7 +69,7 @@ while(1):
         #health=health-25
         #setHealth(health)
 
-    if (str(data).find("r") != -1) and (reloaded == False):
+    if (str(data).find("r") != -1) and (reloaded == False) and (light < 5):
         print("Reloading.")
         reloaded = True
         reload()
