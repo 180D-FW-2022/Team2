@@ -36,17 +36,9 @@ GPIO.setup(pin_right, GPIO.OUT)
 pwm_left = GPIO.PWM(pin_left, freq_cw)
 pwm_right = GPIO.PWM(pin_right, freq_cw)
 
-#commenting for the time being because we are just importing shoot
-# Sound and threading for sound
-#def shotsound():
-#    call(['aplay','shoot.wav'])
-
-#def shoot():
-#    playshot=threading.Thread(target=shotsound)
-#    playshot.start()
-
 startUp()
 setHealth(health)
+
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
