@@ -5,7 +5,7 @@ from time import sleep
 #disable warnings (optional)
 GPIO.setwarnings(False)
 #Select GPIO Mode
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 #set red,green and blue pins
 redPin = [14,27,10,25,0]
 greenPin = [15,22,9,8,5]
