@@ -7,9 +7,9 @@ GPIO.setwarnings(False)
 #Select GPIO Mode
 GPIO.setmode(GPIO.BOARD)
 #set red,green and blue pins
-redPin = [14,27,10,25,0]
-greenPin = [15,22,9,8,5]
-bluePin = [23,24,11,7,6]
+redPin = [8,13,19,22,27]
+greenPin = [10,15,21,24,29]
+bluePin = [16,18,23,26,31]
 #set pins as outputs
 d=0.5
 #delay in sleep
