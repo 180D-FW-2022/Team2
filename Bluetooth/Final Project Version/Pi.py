@@ -1,11 +1,9 @@
 import bluetooth
-import time
+from time import sleep
 import RPi.GPIO as GPIO
 from soundfunctions import shoot, reload
-from lightfunctions import turnOff, startUp, setHealth
+#from lightfunctions import turnOff, startUp, setHealth
 
-#adding to reset lights
-turnOff()
 #health variable for demo
 health = 100
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
@@ -17,10 +15,12 @@ server_sock.listen(1)
 client_sock,address = server_sock.accept()
 print("Accepted connection from ",address)
 
-#GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
 
 pin_left = 32
 pin_right = 33
+# Temporary code for LEDs
+greenPin = [16,15,18,31,29]
 
 freq = 400
 
@@ -30,11 +30,29 @@ duty_ccw = 65
 GPIO.setwarnings(False)
 GPIO.setup(pin_left, GPIO.OUT)
 GPIO.setup(pin_right, GPIO.OUT)
+
+# Temporary code for LEDs
+for i in range(5):
+    GPIO.setup(greenPin[i],GPIO.OUT)
+
 pwm_left = GPIO.PWM(pin_left, freq)
 pwm_right = GPIO.PWM(pin_right, freq)
 
+# Temporary code for LEDs
+d = 0.5
+def green(i):
+    GPIO.output(greenPin[i],GPIO.HIGH)
+def turnOff():
+    for i in range(5):
+        GPIO.output(greenPin[i],GPIO.LOW)
+def startUp():
+    for i in range(5):
+        sleep(d)
+        green(i)
+
+turnOff()
 startUp()
-setHealth(health)
+#setHealth(health)
 reloaded = True
 while(1):
     data = client_sock.recv(1024)
@@ -46,7 +64,7 @@ while(1):
         reloaded = False
         shoot()
         health=health-25
-        setHealth(health)
+        #setHealth(health)
 
     if (str(data).find("r") != -1) and (reloaded == False):
         print("Reloading.")
@@ -78,7 +96,7 @@ while(1):
         pwm_right.start(duty_cw)
         #pwm_right.ChangeDutyCycle(65)
     
-    time.sleep(0.1)
+    sleep(0.1)
     pwm_left.stop()
     pwm_right.stop()
     #pwm_left.ChangeDutyCycle(0)
