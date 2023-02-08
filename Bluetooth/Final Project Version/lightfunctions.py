@@ -1,11 +1,11 @@
 #libraries
-import RPi.GPIO as GPIO
-from subprocess import call
-from time import sleep
+#import RPi.GPIO as GPIO ALREADY HAVE IN PI
+#from subprocess import call ALREADY HAVE IN SOUNDFUNCTIONS
+#from time import sleep ALREADY HAVE IN PI
 #disable warnings (optional)
-GPIO.setwarnings(False)
+#GPIO.setwarnings(False) ALREADY DONE IN PI
 #Select GPIO Mode
-GPIO.setmode(GPIO.BCM)
+#GPIO.setmode(GPIO.BCM) ALREADY DONE IN PI
 #set red,green and blue pins
 redPin = [14,27,10,25,0]
 greenPin = [15,22,9,8,5]

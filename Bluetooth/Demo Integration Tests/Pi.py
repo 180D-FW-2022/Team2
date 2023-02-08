@@ -55,7 +55,7 @@ while(1):
 
     # Sound
     if str(data).find("y") != -1:
-        #print("Shooting.")
+        print("Shooting.")
         shoot()
         health=health-25
         setHealth(health)

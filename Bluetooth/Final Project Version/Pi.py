@@ -36,17 +36,15 @@ GPIO.setup(pin_right, GPIO.OUT)
 pwm_left = GPIO.PWM(pin_left, freq_cw)
 pwm_right = GPIO.PWM(pin_right, freq_cw)
 
-pwm_left.start(0)
-pwm_right.start(0)
-''' commenting for the time being because we are just importing shoot
+#commenting for the time being because we are just importing shoot
 # Sound and threading for sound
-def shotsound():
-    call(['aplay','shoot.wav'])
+#def shotsound():
+#    call(['aplay','shoot.wav'])
 
-def shoot():
-    playshot=threading.Thread(target=shotsound)
-    playshot.start()
-'''
+#def shoot():
+#    playshot=threading.Thread(target=shotsound)
+#    playshot.start()
+
 startUp()
 setHealth(health)
 while(1):
@@ -55,10 +53,14 @@ while(1):
 
     # Sound
     if str(data).find("y") != -1:
-        #print("Shooting.")
+        print("Shooting.")
         shoot()
         health=health-25
         setHealth(health)
+
+    if str(data).find("r") != -1:
+        print("Reloading.")
+        reload()
     
     # For the left motor
     if str(data).find("q") != -1:
