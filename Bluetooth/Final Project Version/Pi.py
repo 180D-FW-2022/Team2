@@ -35,13 +35,13 @@ pwm_right = GPIO.PWM(pin_right, freq)
 
 #startUp()
 #setHealth(health)
-
+reloaded = True
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
 
     # Sound
-    if str(data).find("y") != -1:
+    if str(data).find("y") != -1 and reloaded == True:
         print("Shooting.")
         shoot()
         #health=health-25
@@ -49,6 +49,7 @@ while(1):
 
     if str(data).find("r") != -1:
         print("Reloading.")
+        reloaded = False
         reload()
     
     # For the left motor
