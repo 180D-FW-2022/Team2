@@ -17,7 +17,7 @@ server_sock.listen(1)
 client_sock,address = server_sock.accept()
 print("Accepted connection from ",address)
 
-GPIO.setmode(GPIO.BOARD)
+#GPIO.setmode(GPIO.BOARD)
 
 pin_left = 32
 pin_right = 33
