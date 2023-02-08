@@ -5,7 +5,7 @@ from soundfunctions import shoot, reload
 #from lightfunctions import turnOff, startUp, setHealth
 
 #health variable for demo
-health = 100
+#health = 100
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
 port = 1
@@ -20,7 +20,7 @@ GPIO.setmode(GPIO.BOARD)
 pin_left = 32
 pin_right = 33
 # Temporary code for LEDs
-greenPin = [16,15,18,31,29]
+greenPin = [16,15,18,29,31]
 
 freq = 400
 
@@ -54,16 +54,19 @@ turnOff()
 startUp()
 #setHealth(health)
 reloaded = True
+light = 1
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
 
     # Sound
-    if (str(data).find("y") != -1) and (reloaded == True):
+    if (str(data).find("y") != -1) and (reloaded == True) and (light <= 5):
         print("Shooting.")
         reloaded = False
         shoot()
-        health=health-25
+        GPIO.output(greenPin[light],GPIO.LOW)
+        light = light + 1
+        #health=health-25
         #setHealth(health)
 
     if (str(data).find("r") != -1) and (reloaded == False):
