@@ -54,13 +54,13 @@ turnOff()
 startUp()
 #setHealth(health)
 reloaded = True
-light = 1
+light = 0
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
 
     # Sound
-    if (str(data).find("y") != -1) and (reloaded == True) and (light <= 5):
+    if (str(data).find("y") != -1) and (reloaded == True) and (light < 5):
         print("Shooting.")
         reloaded = False
         shoot()

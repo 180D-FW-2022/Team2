@@ -45,7 +45,7 @@ def recognizeshoot():
         sock.send("y")
 
 def recognizereload():
-    speech = LiveSpeech(keyphrase='reload', kws_threshold=1e-20)
+    speech = LiveSpeech(keyphrase='reload', kws_threshold=1e-10)
     for phrase in speech:
         sock.send("r")
 
