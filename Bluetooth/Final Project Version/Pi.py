@@ -23,6 +23,7 @@ def timerreload():
     
     
 check=threading.Thread(target=check)
+check.daemon = True
 check.start()
 
 #health variable for demo
