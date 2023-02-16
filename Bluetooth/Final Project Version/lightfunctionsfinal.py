@@ -46,6 +46,7 @@ def yellow(i):
 #    GPIO.output(bluePin[i],GPIO.LOW)
     
 def startUp():
+    turnOff()
     for i in range(5):
         sleep(d)
         green(i)
