@@ -20,7 +20,7 @@ for i in range(5):
 
 def turnOff():
     for i in range(5):
-#        GPIO.output(redPin[i],GPIO.LOW)
+        GPIO.output(redPin[i],GPIO.LOW)
         GPIO.output(greenPin[i],GPIO.LOW)
 #        GPIO.output(bluePin[i],GPIO.LOW)
     
