@@ -54,8 +54,8 @@ duty_ccw = 65
 GPIO.setwarnings(False)
 GPIO.setup(pin_left, GPIO.OUT)
 GPIO.setup(pin_right, GPIO.OUT)
-pwm_left = GPIO.PWM(pin_left, freq)
-pwm_right = GPIO.PWM(pin_right, freq)
+pwm_left = GPIO.PWM(pin_left, freq_cw)
+pwm_right = GPIO.PWM(pin_right, freq_cw)
 
 #setHealth(health)
 
