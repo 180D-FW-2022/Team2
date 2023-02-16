@@ -1,8 +1,8 @@
 import bluetooth
 from time import sleep
 import RPi.GPIO as GPIO
-from soundfunctions import shoot, reload
-from lightfunctions import turnOff, startUp, setHealth
+from soundfunctionsfinal import shoot, reload
+from lightfunctionsfinal import turnOff, startUp, setHealth
 import threading
 turnOff()
 connected = False
