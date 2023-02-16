@@ -7,8 +7,8 @@ GPIO.setwarnings(False)
 #Select GPIO Mode
 GPIO.setmode(GPIO.BOARD)
 #set red,green and blue pins
-redPin = [11,15,18,29,36]
-greenPin = [13,16,22,31,37]
+greenPin = [11,15,18,29,36]
+redPin = [13,16,22,31,37]
 #bluePin = [16,18,23,26,31]
 #set pins as outputs
 d=0.5
