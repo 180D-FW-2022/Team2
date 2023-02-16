@@ -11,13 +11,13 @@ def check():
     while(connected==False):
         fred()
         
-def reloadtimer()
+def reloadtimer():
     sleep(2)
     reload()
     sleep(3)
     reloaded = True
 
-def timerreload()
+def timerreload():
     timer = threading.Thread(target=reloadtimer)
     timer.start()
     
