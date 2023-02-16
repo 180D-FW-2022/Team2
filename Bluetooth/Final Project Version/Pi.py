@@ -1,33 +1,10 @@
 import bluetooth
 from time import sleep
 import RPi.GPIO as GPIO
-from soundfunctionsfinal import shoot, reload
-from lightfunctionsfinal import turnOff, startUp, setHealth, fred
-import threading
-turnOff()
-connected = False
-reloaded = True
-def check():
-    while(connected==False):
-        fred()
-        
-def reloadtimer():
-    sleep(2)
-    reload()
-    sleep(3)
-    reloaded = True
-
-def timerreload():
-    timer = threading.Thread(target=reloadtimer)
-    timer.start()
-    
-    
-check=threading.Thread(target=check)
-check.daemon = True
-check.start()
+from soundfunctions import shoot, reload
 
 #health variable for demo
-health = 100
+#health = 100
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
 port = 1
@@ -36,15 +13,13 @@ server_sock.listen(1)
 
 client_sock,address = server_sock.accept()
 print("Accepted connection from ",address)
-connected = True
-check.join()
-startUp()
-#GPIO.setmode(GPIO.BOARD)
+
+GPIO.setmode(GPIO.BOARD)
 
 pin_left = 32
 pin_right = 33
 # Temporary code for LEDs
-#greenPin = [16,15,18,29,31]
+greenPin = [16,15,18,29,31]
 
 freq = 400
 
@@ -57,28 +32,51 @@ GPIO.setup(pin_right, GPIO.OUT)
 pwm_left = GPIO.PWM(pin_left, freq)
 pwm_right = GPIO.PWM(pin_right, freq)
 
-#setHealth(health)
+# Temporary code for LEDs
+for i in range(5):
+    GPIO.setup(greenPin[i],GPIO.OUT)
 
-#light = 0
+pwm_left = GPIO.PWM(pin_left, freq)
+pwm_right = GPIO.PWM(pin_right, freq)
+
+# Temporary code for LEDs
+d = 0.5
+def green(i):
+    GPIO.output(greenPin[i],GPIO.HIGH)
+def turnOff():
+    for i in range(5):
+        GPIO.output(greenPin[i],GPIO.LOW)
+def startUp():
+    for i in range(5):
+        sleep(d)
+        green(i)
+
+
+turnOff()
+startUp()
+#setHealth(health)
+reloaded = True
+light = 0
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
-    if health == 0:
-        break
+
     # Sound
-    if (str(data).find("y") != -1) and (reloaded == True):
+    if (str(data).find("y") != -1) and (reloaded == True) and (light < 5):
         print("Shooting.")
         reloaded = False
         shoot()
-        health=health-10
-        setHealth(health)
+        GPIO.output(greenPin[light],GPIO.LOW)
+        light = light + 1
         #health=health-25
         #setHealth(health)
 
-    if (str(data).find("r") != -1) and (reloaded == False):
+    if (str(data).find("r") != -1) and (reloaded == False) and (light < 5):
         print("Reloading.")
         reload()
         reloaded=True
+        reloaded = True
+        reload()
     
     # For the left motor
     if str(data).find("q") != -1:
@@ -110,7 +108,7 @@ while(1):
     pwm_right.stop()
     #pwm_left.ChangeDutyCycle(0)
     #pwm_right.ChangeDutyCycle(0)
-    
+
 #pwm_left.stop()
 #pwm_right.stop()
 GPIO.cleanup()
