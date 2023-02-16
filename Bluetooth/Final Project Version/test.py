@@ -20,7 +20,7 @@ def reload():
 
 connected = False
 def check():
-    while(!connected):
+    while(connected==False):
         fred()
 turnOff()
 
