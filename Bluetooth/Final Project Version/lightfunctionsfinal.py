@@ -93,3 +93,9 @@ def setHealth(i):
         yellow(0)
     else:
         redall()
+
+def fred():
+    redall()
+    sleep(d)
+    turnOff()
+    sleep(d)
