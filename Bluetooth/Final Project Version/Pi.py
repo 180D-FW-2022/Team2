@@ -77,7 +77,8 @@ while(1):
 
     if (str(data).find("r") != -1) and (reloaded == False):
         print("Reloading.")
-        timerreload()
+        reload()
+        reloaded=True
     
     # For the left motor
     if str(data).find("q") != -1:
