@@ -1,7 +1,7 @@
 import bluetooth
 from time import sleep
 import RPi.GPIO as GPIO
-from soundfunctions import shoot, reload
+from soundfunctionsfinal import shoot, reload
 
 #health variable for demo
 #health = 100
