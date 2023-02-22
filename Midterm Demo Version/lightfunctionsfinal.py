@@ -1,49 +1,46 @@
-#libraries
 import RPi.GPIO as GPIO
-from subprocess import call
 from time import sleep
-#disable warnings (optional)
+
 GPIO.setwarnings(False)
-#Select GPIO Mode
 GPIO.setmode(GPIO.BOARD)
-#set red,green and blue pins
+#set red,green pins, not using blue
 greenPin = [11,15,18,29,36]
 redPin = [13,16,22,31,37]
-#bluePin = [16,18,23,26,31]
+
 #set pins as outputs
 d=0.5
 #delay in sleep
 for i in range(5):
     GPIO.setup(redPin[i],GPIO.OUT)
     GPIO.setup(greenPin[i],GPIO.OUT)
-#    GPIO.setup(bluePin[i],GPIO.OUT)
+
 
 def turnOff():
     for i in range(5):
         GPIO.output(redPin[i],GPIO.LOW)
         GPIO.output(greenPin[i],GPIO.LOW)
-#        GPIO.output(bluePin[i],GPIO.LOW)
+
     
 def red(i):
     GPIO.output(redPin[i],GPIO.HIGH)
     GPIO.output(greenPin[i],GPIO.LOW)
-#    GPIO.output(bluePin[i],GPIO.LOW)
+
 
 def redall():
     for i in range(5):
         GPIO.output(redPin[i],GPIO.HIGH)
         GPIO.output(greenPin[i],GPIO.LOW)
-#        GPIO.output(bluePin[i],GPIO.LOW)
+
 
 def green(i):
     GPIO.output(redPin[i],GPIO.LOW)
     GPIO.output(greenPin[i],GPIO.HIGH)
-#    GPIO.output(bluePin[i],GPIO.LOW)
+
     
 def yellow(i):
     GPIO.output(redPin[i],GPIO.HIGH)
     GPIO.output(greenPin[i],GPIO.HIGH)
-#    GPIO.output(bluePin[i],GPIO.LOW)
+
     
 def startUp():
     turnOff()
