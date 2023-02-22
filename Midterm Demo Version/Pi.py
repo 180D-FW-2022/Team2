@@ -23,8 +23,8 @@ greenPin = [16,15,18,29,31]
 
 freq = 400
 
-duty_cw = 45
-duty_ccw = 65
+duty_cw = 35
+duty_ccw = 75
 
 GPIO.setwarnings(False)
 GPIO.setup(pin_left, GPIO.OUT)
