@@ -23,6 +23,21 @@ class VAO:
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['cat'])
 
+        # tank vao
+        self.vaos['tank'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['tank'])
+
+        # container vao
+        self.vaos['container'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['container'])
+
+        # house vao
+        self.vaos['house'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['house'])
+
         # skybox vao
         self.vaos['skybox'] = self.get_vao(
             program=self.program.programs['skybox'],

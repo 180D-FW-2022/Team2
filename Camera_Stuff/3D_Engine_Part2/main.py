@@ -4,6 +4,7 @@ from camera import Camera
 from light import Light
 from mesh import Mesh
 from scene import Scene
+import time
 
 from utils import ARUCO_DICT
 from pose import *
@@ -37,7 +38,7 @@ class GraphicsEngine:
         # camera
         calibration_matrix_path = '../AruCo/calibration_files/calibration_matrix_webcam.npy'
         calibration = np.load(calibration_matrix_path)
-        self.camera = Camera(self, position=(0, 0, 0),  k=calibration)
+        self.camera = Camera(self,  k=calibration)
         # mesh
         self.mesh = Mesh(self)
         # scene
@@ -65,9 +66,9 @@ class GraphicsEngine:
         # webcam = Webcam()
         # webcam.start()
 
-        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+        # cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        # cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+        # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
         newcameramtx, roi = cv2.getOptimalNewCameraMatrix(k, d, (1280, 720), 1, (1280, 720))
 
@@ -75,17 +76,27 @@ class GraphicsEngine:
             self.get_time()
             self.check_events()
 
-            ret, background= cap.read()
+            #ret, background= cap.read()
 
-            #background = cv2.imread('../test_files/test4.jpg')
-            background, rvecs, tvecs = pose_esitmation(background, aruco_dict_type, k, d)
-            background = cv2.undistort(background, k, d, None, newcameramtx)
+            background = cv2.imread('../test_files/center.png')
+            #background, rvec, tvec = pose_esitmation(background, aruco_dict_type, k, d)
 
-            self.camera.update_camera_demo(rvecs, tvecs)
+            rvec = np.array([[[3.1415/2, 3.1415/2, 3.1415/2]]])
+            tvec = np.array([[[0.1,  0.3,  1.0]]])
+
+
+            cv2.drawFrameAxes(background, k, d, rvec, tvec, 0.2)
+            #background = cv2.undistort(background, k, d, None, newcameramtx)
+            # rvec = rvec * transform
+            # tvec = tvec * transform
+
+            # self.camera.update_camera_demo(rvec, tvec)
+
+            self.camera.update()
             self.render(background)
             self.delta_time = self.clock.tick(60)
 
-        cap.release()
+        #cap.release()
 if __name__ == '__main__':
     app = GraphicsEngine()
 

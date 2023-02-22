@@ -8,6 +8,9 @@ class VBO:
         self.vbos = {}
         self.vbos['cube'] = CubeVBO(ctx)
         self.vbos['cat'] = CatVBO(ctx)
+        self.vbos['tank'] = TankVBO(ctx)
+        self.vbos['container'] = ContainerVBO(ctx)
+        self.vbos['house'] = HouseVBO(ctx)
         self.vbos['skybox'] = SkyBoxVBO(ctx)
         self.vbos['advanced_skybox'] = AdvancedSkyBoxVBO(ctx)
         self.vbos['square'] = SquareVBO(ctx)
@@ -119,6 +122,51 @@ class CatVBO(BaseVBO):
         vertex_data = np.array(vertex_data, dtype='f4')
         return vertex_data
 
+class TankVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/tank/tank.obj', create_materials=True, cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        print(vertex_data)
+        return vertex_data
+
+class ContainerVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/container/container.obj', cache=True, parse=True)
+        vertex_data = ()
+        for name, obj in objs.materials.items():
+            print(obj.vertex_format)
+            vertex_data = vertex_data + obj.vertices
+
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+class HouseVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/house/OLD house.obj', cache=True, parse=True)
+        vertex_data = ()
+        for name, obj in objs.materials.items():
+            print(obj.vertex_format)
+            vertex_data = vertex_data + obj.vertices
+
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
 
 class SkyBoxVBO(BaseVBO):
     def __init__(self, ctx):
