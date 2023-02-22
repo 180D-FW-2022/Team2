@@ -69,8 +69,6 @@ while(1):
         print("Reloading.")
         reload()
         reloaded=True
-        reloaded = True
-        reload()
     
     # For the left motor
     if str(data).find("q") != -1:
