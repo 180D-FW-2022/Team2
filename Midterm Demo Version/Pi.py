@@ -36,9 +36,6 @@ pwm_right = GPIO.PWM(pin_right, freq)
 for i in range(5):
     GPIO.setup(greenPin[i],GPIO.OUT)
 
-pwm_left = GPIO.PWM(pin_left, freq)
-pwm_right = GPIO.PWM(pin_right, freq)
-
 # Temporary code for LEDs
 d = 0.5
 def green(i):
