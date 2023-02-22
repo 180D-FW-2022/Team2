@@ -8,12 +8,12 @@ from utils import ARUCO_DICT
 FOV = 20  # deg
 NEAR = 0.01
 FAR = 10
-SPEED = 0.00005
+SPEED = 0.005
 SENSITIVITY = 0.04
 
 
 class Camera:
-    def __init__(self, app, position=(0, 0, 4), yaw=-90, pitch=0, k=0):
+    def __init__(self, app, position=(0, 0, 1), yaw=-90, pitch=0, k=0):
         self.app = app
         self.aspect_ratio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
         self.position = glm.vec3(position)
@@ -34,14 +34,17 @@ class Camera:
         self.fov = np.deg2rad(40)
         print(np.rad2deg(self.fov))
 
-        frame = cv2.imread('../test_files/t2.jpg')
-        frame, rvecs, tvecs = pose_esitmation(frame, ARUCO_DICT['DICT_4X4_50'], k, d)
+        #frame = cv2.imread('../test_files/t2.jpg')
+        #frame, rvecs, tvecs = pose_esitmation(frame, ARUCO_DICT['DICT_4X4_50'], k, d)
 
-        print(rvecs)
-        print(tvecs)
+        #print(rvecs)
+        #print(tvecs)
 
         # view matrix
         print('\nView Matrix:')
+
+        rvecs = np.array([[[3.1415/2, -3.1415/2, -3.1415/2]]])
+        tvecs = np.array([[[.1, -0.3, -1]]])
 
         rmtx = cv2.Rodrigues(rvecs)[0]
 
@@ -49,9 +52,9 @@ class Camera:
                                 [rmtx[1][0], rmtx[1][1], rmtx[1][2], tvecs[0][0][1]],
                                 [rmtx[2][0], rmtx[2][1], rmtx[2][2], tvecs[0][0][2]],
                                 [0.0, 0.0, 0.0, 1.0]])
-        # view_matrix = np.array([[1, 0, 0, -0.1],
+        # view_matrix = np.array([[1, 0, 0, 0],
         #                         [0, 1, 0, 0],
-        #                         [0, 0, 1, -0.2],
+        #                         [0, 0, 1, 0],
         #                         [0.0, 0.0, 0.0, 1.0]])
 
 
@@ -65,30 +68,36 @@ class Camera:
         # view_matrix = view_matrix * INVERSE_MATRIX
         view_matrix = glm.mat4x4(view_matrix)
         # view_matrix = np.transpose(view_matrix)
-        # view_matrix = self.get_view_matrix()
+        view_matrix = self.get_view_matrix()
 
         self.m_view = view_matrix  # [R|t]
 
         print(self.m_view)
         # projection matrix
-        A = NEAR + FAR
-        B = NEAR * FAR
-        persp = np.array([[k[0][0], k[0][1], -k[0][2], 0],
-                          [0, k[1][1], -k[1][2], 0],
-                          [0, 0, A, B],
-                          [0 ,0, -1, 0]])
+        # A = NEAR + FAR
+        # B = NEAR * FAR
+        # persp = np.array([[k[0][0], k[0][1], -k[0][2], 0],
+        #                   [0, k[1][1], -k[1][2], 0],
+        #                   [0, 0, A, B],
+        #                   [0, 0, -1, 0]])
+
+        persp = np.array([[2*k[0][0]/1280, -2*k[0][1]/1280, (1280 - 2*k[0][2])/1280, 0],
+                          [0, 2*k[1][1]/720, (-720+2*k[1][2])/720, 0],
+                          [0, 0, (-FAR - NEAR)/(FAR-NEAR), -2*FAR*NEAR/(FAR-NEAR)],
+                          [0, 0, -1, 0]])
 
         persp = glm.mat4x4(persp)
         #gl_ortho = glm.ortho(-640, 640, 0, 720, NEAR, FAR)
-        gl_ortho = glm.ortho(0, 1280, 0, 720, NEAR, FAR)
+        #gl_ortho = glm.ortho(0, 1280, 0, 720, NEAR, FAR)
 
-        self.m_proj = glm.mul(gl_ortho, persp)
+        #self.m_proj = glm.mul(gl_ortho, persp)
+        self.m_proj = persp
         print("\nProj Matrix:")
         print(self.m_proj)
 
         print("\nProj Matrix:")
         #print(self.get_projection_matrix())
-        # self.m_proj = self.get_projection_matrix()
+        #self.m_proj = self.get_projection_matrix()
         # self.m_proj = cv2.rod
 
     def rotate(self):
@@ -135,11 +144,12 @@ class Camera:
         self.m_view = view_matrix
 
 
-    def update(self, rvecs, tvecs):
+    def update(self):
         self.move()
         self.rotate()
-        # self.update_camera_vectors()
-        # self.m_view = self.get_view_matrix()
+        # comment out to stop
+        self.update_camera_vectors()
+        self.m_view = self.get_view_matrix()
 
     def move(self):
         velocity = SPEED * self.app.delta_time

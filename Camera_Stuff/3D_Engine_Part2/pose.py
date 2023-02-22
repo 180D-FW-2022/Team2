@@ -19,6 +19,13 @@ def pose_esitmation(frame, aruco_dict_type, matrix_coefficients, distortion_coef
             cv2.aruco.drawDetectedMarkers(frame, corners)
 
             # Draw Axis
+            # rvec = np.array([[[0.0, 0.0, 0.0]]])
+            # tvec = np.array([[[0, 0, 0.1]]])
+            distortion_coefficients = np.asarray([[0.0, 0.0, 0.0, 0.0, 0.0]])
+            print(f'rotation: {rvec}')
+            print(f'translation: {tvec}')
+            print(distortion_coefficients)
+
             cv2.drawFrameAxes(frame, matrix_coefficients, distortion_coefficients, rvec, tvec, 0.01)
             if tvec[0][0][2] < 0:
                 tvec[0][0][2] *= -1

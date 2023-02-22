@@ -80,6 +80,22 @@ class Cat(ExtendedBaseModel):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 
+class Tank(ExtendedBaseModel):
+    def __init__(self, app, vao_name='tank', tex_id='tank',
+                 pos=(0, 0, 0), rot=(-90, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Container(ExtendedBaseModel):
+    def __init__(self, app, vao_name='container', tex_id='container',
+                 pos=(0, 0, 0), rot=(-90, 0, 0), scale=(100, 100, 100)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class House(ExtendedBaseModel):
+    def __init__(self, app, vao_name='house', tex_id='house',
+                 pos=(0, 0, 0), rot=(-90, 0, 0), scale=(100, 100, 100)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
 class SkyBox(BaseModel):
     def __init__(self, app, vao_name='skybox', tex_id='skybox',
                  pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
