@@ -54,7 +54,6 @@ def startUp():
 
 turnOff()
 startUp()
-#setHealth(health)
 reloaded = True
 light = 0
 while(1):
@@ -68,8 +67,6 @@ while(1):
         shoot()
         GPIO.output(greenPin[light],GPIO.LOW)
         light = light + 1
-        #health=health-25
-        #setHealth(health)
 
     if (str(data).find("r") != -1) and (reloaded == False) and (light < 5):
         print("Reloading.")
@@ -83,12 +80,10 @@ while(1):
         #print("Moving left motor forward.")
         pwm_left.ChangeFrequency(freq)
         pwm_left.start(duty_cw)
-        #pwm_left.ChangeDutyCycle(65)
     elif str(data).find("a") != -1:
         #print("Moving left motor backwards.")
         pwm_left.ChangeFrequency(freq)
         pwm_left.start(duty_ccw)
-        #pwm_left.ChangeDutyCycle(45)
 
 
     # For the right motor
@@ -96,21 +91,15 @@ while(1):
         #print("Moving right motor forward.")
         pwm_right.ChangeFrequency(freq)
         pwm_right.start(duty_ccw)
-        #pwm_right.ChangeDutyCycle(45)
     elif str(data).find("l") != -1:
         #print("Moving right motor backwards.")
         pwm_right.ChangeFrequency(freq)
         pwm_right.start(duty_cw)
-        #pwm_right.ChangeDutyCycle(65)
     
     sleep(0.1)
     pwm_left.stop()
     pwm_right.stop()
-    #pwm_left.ChangeDutyCycle(0)
-    #pwm_right.ChangeDutyCycle(0)
 
-#pwm_left.stop()
-#pwm_right.stop()
 GPIO.cleanup()
 client_sock.close()
 server_sock.close()
