@@ -2,9 +2,29 @@ import bluetooth
 from time import sleep
 import RPi.GPIO as GPIO
 from soundfunctionsfinal import shoot, reload
+from lightfunctionsfinal import turnOff, startUp, setHealth, fred
+import threading
+turnOff()
+connected = False
+reloaded = True
+ammo = 5 #choose a number
+ammo1 = ammo
+def check():
+    global connected
+    while(connected==False):
+        fred()
 
-#health variable for demo
-#health = 100
+def reloading():
+    global reloaded
+    sleep(2)
+    reload()
+    sleep(3)
+    reloaded = True
+    print("loaded")
+
+check=threading.Thread(target=check)
+check.daemon = True
+check.start()
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
 port = 1
@@ -13,13 +33,13 @@ server_sock.listen(1)
 
 client_sock,address = server_sock.accept()
 print("Accepted connection from ",address)
-
-GPIO.setmode(GPIO.BOARD)
+connected = True
+check.join()
+startUp()
+#GPIO.setmode(GPIO.BOARD)
 
 pin_left = 32
 pin_right = 33
-# Temporary code for LEDs
-greenPin = [16,15,18,29,31]
 
 freq = 400
 
@@ -32,43 +52,23 @@ GPIO.setup(pin_right, GPIO.OUT)
 pwm_left = GPIO.PWM(pin_left, freq)
 pwm_right = GPIO.PWM(pin_right, freq)
 
-# Temporary code for LEDs
-for i in range(5):
-    GPIO.setup(greenPin[i],GPIO.OUT)
 
-# Temporary code for LEDs
-d = 0.5
-def green(i):
-    GPIO.output(greenPin[i],GPIO.HIGH)
-def turnOff():
-    for i in range(5):
-        GPIO.output(greenPin[i],GPIO.LOW)
-def startUp():
-    for i in range(5):
-        sleep(d)
-        green(i)
-
-
-turnOff()
-startUp()
-reloaded = True
-light = 0
 while(1):
     data = client_sock.recv(1024)
     print("Received: " + str(data))
 
     # Sound
-    if (str(data).find("y") != -1) and (reloaded == True) and (light < 5):
+    if (str(data).find("y") != -1) and (reloaded == True) and (ammo1 > 0):
         print("Shooting.")
         reloaded = False
         shoot()
-        GPIO.output(greenPin[light],GPIO.LOW)
-        light = light + 1
+        ammo1 = ammo1 - 1
+        setHealth((ammo1/ammo)*100)
 
-    if (str(data).find("r") != -1) and (reloaded == False) and (light < 5):
+    if (str(data).find("r") != -1) and (reloaded == False) and (ammo1 > 0):
         print("Reloading.")
-        reload()
-        reloaded=True
+        thread = threading.Thread(target=reloading)
+        thread.start()
     
     # For the left motor
     if str(data).find("q") != -1:
