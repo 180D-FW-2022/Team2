@@ -19,7 +19,7 @@ GPIO.setmode(GPIO.BOARD)
 pin_left = 32
 pin_right = 33
 # Temporary code for LEDs
-greenPin = [16,15,18,29,31]
+greenPin = [11,15,18,29,36]
 
 freq = 400
 
