@@ -19,6 +19,6 @@ def reload():
     playreload=threading.Thread(target=reloadsound)
     playreload.start()
     
-def bluetooth():
+def bluetooth_sound():
     playbluetooth=threading.Thread(target=bluetoothsound)
     playbluetooth.start()
