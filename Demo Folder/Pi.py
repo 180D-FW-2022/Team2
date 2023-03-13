@@ -35,7 +35,7 @@ client_sock,address = server_sock.accept()
 print("Accepted connection from ",address)
 connected = True
 check.join()
-bluetooth_sound()
+#bluetooth_sound()
 startUp()
 #GPIO.setmode(GPIO.BOARD)
 
