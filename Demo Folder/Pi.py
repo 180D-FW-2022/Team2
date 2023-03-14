@@ -26,7 +26,7 @@ check.daemon = True
 check.start()
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
-port = 1
+port = 9000
 server_sock.bind(("", port))
 server_sock.listen(1)
 
