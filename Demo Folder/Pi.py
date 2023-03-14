@@ -1,7 +1,7 @@
 import bluetooth
 from time import sleep
 import RPi.GPIO as GPIO
-from soundfunctionsfinal import shoot, reload
+from soundfunctionsfinal import shoot, reload, bluetooth_sound
 from lightfunctionsfinal import turnOff, startUp, setHealth, fred
 import threading
 turnOff()
@@ -35,8 +35,10 @@ client_sock,address = server_sock.accept()
 print("Accepted connection from ",address)
 connected = True
 #check.join()
-#bluetooth_sound()
+#
 startUp()
+bluetooth_sound()
+sleep(1)
 #GPIO.setmode(GPIO.BOARD)
 
 pin_left = 32

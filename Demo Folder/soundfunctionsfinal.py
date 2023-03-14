@@ -7,8 +7,8 @@ def shotsound():
 def reloadsound():
     call(['sudo', 'aplay', 'reload.wav', '-q'])
 
-#def bluetoothsound():
-#    call(['sudo', 'aplay', 'bluetooth.wav', '-q'])
+def bluetoothsound():
+    call(['sudo', 'aplay', 'bluetooth.wav', '-q'])
 
 
 def shoot():
@@ -19,6 +19,6 @@ def reload():
     playreload=threading.Thread(target=reloadsound)
     playreload.start()
     
-#def bluetooth_sound():
-#    playbluetooth=threading.Thread(target=bluetoothsound)
-#    playbluetooth.start()
+def bluetooth_sound():
+    playbluetooth=threading.Thread(target=bluetoothsound)
+    playbluetooth.start()
