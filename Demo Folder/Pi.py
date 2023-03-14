@@ -22,9 +22,9 @@ def reloading():
     reloaded = True
     print("loaded")
 
-check=threading.Thread(target=check)
-check.daemon = True
-check.start()
+#check=threading.Thread(target=check)
+#check.daemon = True
+#check.start()
 server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
 port = 1
@@ -34,7 +34,7 @@ server_sock.listen(1)
 client_sock,address = server_sock.accept()
 print("Accepted connection from ",address)
 connected = True
-check.join()
+#check.join()
 #bluetooth_sound()
 startUp()
 #GPIO.setmode(GPIO.BOARD)
