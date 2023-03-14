@@ -16,7 +16,6 @@ def check():
 
 def reloading():
     global reloaded
-    sleep(2)
     reload()
     sleep(3)
     reloaded = True
