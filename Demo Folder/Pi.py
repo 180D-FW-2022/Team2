@@ -1,7 +1,7 @@
 import bluetooth
 from time import sleep
 import RPi.GPIO as GPIO
-from soundfunctionsfinal import shoot, reload, bluetooth_sound
+from soundfunctionsfinal import shoot, reload
 from lightfunctionsfinal import turnOff, startUp, setHealth, fred
 import threading
 turnOff()
