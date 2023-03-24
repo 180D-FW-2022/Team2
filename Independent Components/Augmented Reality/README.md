@@ -1,4 +1,3 @@
-# 3D-Graphics-Engine
-OpenGL Graphics Engine in Python ( Pygame, ModernGL ) 
-
-![opengl](/screenshot/0.jpg)
+# Augmented reality system
+Rendering, implemented with OpenGL Graphics Engine in Python ( Pygame, ModernGL ) 
+Object tracking done with OpenCV
