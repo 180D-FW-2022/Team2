@@ -8,6 +8,11 @@ This repo contains all the code you need to run the GRAVES project.
 
 All the main code can be found in Independent Components. In particlar, the two most important files are main_control.py located under the folder Main Control, and main_client.py located under the folder Augmented Reality as these are the only two files required to run our project. For exact details on how to do this, please refer to our User Manual.
 
+Demo Folder contains additional debugging scripts that can be used to test individual functionality for certain parts of our vehicle. 
+
+For more information, each sub directory should contain a readme describing the folder contents. 
+
+
 
 
 
