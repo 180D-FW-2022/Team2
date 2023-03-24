@@ -1,0 +1,15 @@
+This folder contains code for each individual component. A short description of each folder is included below 
+- Audio 
+    - Sound files to play onboard the vehicle. 
+- Augmented Reality 
+    - All code for object tracking, and rendering. 
+- Bluetooth
+    - Code for sending bluetooth commands from computer to pi. 
+- Main Control
+    - Main control program for our graphical user interface which also integrates bluetooth and speech recognition.
+- Peripherals
+    - Code for playing sound and controlling lights.
+- Servo_Tests
+    - Code for testing individual motors. 
+- Speech Recognition
+    - Code for testing speech recognition. 
