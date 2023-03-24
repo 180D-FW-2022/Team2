@@ -1,6 +1,6 @@
 This folder contains all the necessary code and files to run the physical
 vehicle. The Augmented Reality portion of the project is located in
-\Team2\Camera_Stuff.
+\Team2\Independent Components\Camera_Stuff.
 
 1. Power on the vehicle by plugging in both USB-A to micro-USB cables into
    the power bank.
