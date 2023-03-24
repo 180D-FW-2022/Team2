@@ -1,0 +1,50 @@
+Date : 2023-02-06 22:58:25
+Directory : c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main
+Total : 20 files,  1338 codes, 145 comments, 364 blanks, all 1847 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| Python           |         16 |      1,020 |        145 |        360 |      1,525 |
+| JSON             |          2 |        310 |          0 |          1 |        311 |
+| pip requirements |          1 |          5 |          0 |          1 |          6 |
+| Markdown         |          1 |          3 |          0 |          2 |          5 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                    | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                       |         20 |      1,338 |        145 |        364 |      1,847 |
+| . (Files)                                                                                               |         19 |      1,323 |        145 |        364 |      1,832 |
+| objects                                                                                                 |          1 |         15 |          0 |          0 |         15 |
+| objects\cat                                                                                             |          1 |         15 |          0 |          0 |         15 |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                | language         | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\README.md                             | Markdown         |          3 |          0 |          2 |          5 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\camera.py                             | Python           |         74 |         10 |         39 |        123 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\client.py                             | Python           |         16 |          1 |          7 |         24 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\create_map.ipynb                      | JSON             |        295 |          0 |          1 |        296 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\create_map.py                         | Python           |        112 |         11 |         45 |        168 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\get_pi_video.py                       | Python           |         45 |          1 |          5 |         51 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\light.py                              | Python           |         12 |          2 |          3 |         17 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\main_client.py                        | Python           |        135 |         22 |         35 |        192 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\main_server.py                        | Python           |        166 |         28 |         43 |        237 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\mesh.py                               | Python           |         10 |          0 |          3 |         13 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\model.py                              | Python           |        124 |         28 |         62 |        214 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\objects\cat\20430_Cat_v1_NEW.obj.json | JSON             |         15 |          0 |          0 |         15 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\requirements.txt                      | pip requirements |          5 |          0 |          1 |          6 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\scene.py                              | Python           |         35 |         21 |         18 |         74 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\scene_renderer.py                     | Python           |         28 |          5 |         12 |         45 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\server.py                             | Python           |         18 |          2 |          9 |         29 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\shader_program.py                     | Python           |         18 |          0 |          7 |         25 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\texture.py                            | Python           |         49 |          3 |         10 |         62 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\vao.py                                | Python           |         41 |          9 |         13 |         63 |
+| c:\Users\VMG-Common\Pictures\camera_stuff\3D-Graphics-Engine-main\vbo.py                                | Python           |        137 |          2 |         49 |        188 |
+| Total                                                                                                   |                  |      1,338 |        145 |        364 |      1,847 |
++---------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
