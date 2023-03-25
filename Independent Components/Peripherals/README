@@ -1,3 +1,8 @@
 The files in this folder were used for testing both sound and audio and their respective implementations.
 The important files are in the final version folder.
 In there lightfunctionsfinal.py and soundfunctionsfinal.py are the files from which the code in the Pi imports functions to utilize the speakers and the lights as desired
+This was done in order to make implementation easy with a simple line:
+from ~filename~ import function1, function2, function3
+
+The sound uses threading to prevent interruption of other processes and subprocess to play sound via the command line.
+The lights use threading, when needed, to prevent interruption of other processes, and RPi.GPIO to controll the lights with the pins of the Pi.
