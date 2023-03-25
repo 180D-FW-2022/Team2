@@ -1,0 +1,3 @@
+The files in this folder were used for testing various different methods for speech recognition.
+The main file which is the final product for speech recognition is SpeechTestThread.py
+However, this file isn't used as the speech recognition is implemented directly in the main_control.py which is in the main control folder.
